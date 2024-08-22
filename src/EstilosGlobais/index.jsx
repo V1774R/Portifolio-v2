@@ -15,12 +15,12 @@ export const EstiloGlobal = createGlobalStyle`
     }
     section{
         width: 100%;
-        min-height: 50vh;
+        min-height: 60vh;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        padding-bottom: 0px;
+        padding: 10px 0px 0px 0px;
         margin: 1px auto 1px auto;
         background-color: #bdbdbd;
     }
@@ -62,42 +62,16 @@ export const EstiloGlobal = createGlobalStyle`
         transition: 500ms;
         opacity: 0.8;
     }
-    .formacao{
-        display: flex;
-        flex-direction: column;
-        padding: 45px 10px 20px 10px;
-        gap: 10px;
-        background-color: #807e7e;
-        position: relative;
-    }
-    .formacao h3{
-        font-weight: 500;
-        background-color: #000000;
-        color: #ffffff;
-        padding: 5px;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-    }
-    .formacao h4{
-        font-weight: 500;
-    }
-    .formacao p{
-        text-align: justify;
-        background-color: none;
-    }
     .artigo .projeto{
         width: 350px;
         border-radius: 0px;
+        margin: auto;
     }
     .artigo button{
         width: 350px;
-        margin-bottom: 30px;
+        margin: auto auto 30px auto;
     }
-    .artigo a{
-        margin-top: -9px;
-    }
+
     button{
         background-color: #000000;
         color: #ececec;

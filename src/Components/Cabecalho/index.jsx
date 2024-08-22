@@ -1,3 +1,4 @@
+import { Link } from "react-scroll"
 import styled from "styled-components"
 
 const CabecalhoEstilizado = styled.header`
@@ -10,6 +11,11 @@ const CabecalhoEstilizado = styled.header`
     align-content: center;
     justify-content: center;
     align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    z-index: 9999;
     p{
         cursor: pointer;
         transition: 0.1s;
@@ -22,14 +28,47 @@ const CabecalhoEstilizado = styled.header`
     }
 `
 
-export const Cabecalho = () => {
+export const Cabecalho = ({ rolarParaSecao }) => {
     return(
         <CabecalhoEstilizado>
-            <p>About</p>
-            <p>Skills</p>
-            <p>Education</p>
-            <p>Projects</p>
-            <p>Contact</p>
+            <Link 
+                to="AboutSec" 
+                offset={-100} 
+                smooth={true} 
+                onClick={rolarParaSecao('AboutSec')}
+            >
+                <p>About</p>
+            </Link>
+            <Link 
+                to="SkillsSec"
+                offset={-100}
+                smooth={true}
+                onClick={rolarParaSecao('SkillsSec')}
+            >
+                <p>Skills</p>
+            </Link>
+            <Link 
+                to="EducationSec"
+                smooth={true}
+                offset={-70}
+            >
+                <p>Education</p>
+            </Link> 
+            <Link
+                to="ProjectsSec"
+                smooth={true}
+                offset={-70}
+            >
+                <p>Projects</p>
+            </Link>
+            <Link
+                to="ContactSec"
+                smooth={true}
+                
+            >
+                <p>Contact</p>
+            </Link>
+
         </CabecalhoEstilizado>
     )
 }

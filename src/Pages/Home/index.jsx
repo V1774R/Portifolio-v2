@@ -1,5 +1,6 @@
-import { useState } from "react"
 import styled from "styled-components"
+import { CardFormacao } from "../../Components/CardFormacao"
+import { Element } from "react-scroll"
 
 const DivEstilizada = styled.div`
     display: flex;
@@ -11,6 +12,7 @@ const DivEstilizada = styled.div`
 
     .im{
         font-size: 1.4rem;
+        background-color: none;
     }
     .titulo{
         text-align: center;
@@ -19,19 +21,14 @@ const DivEstilizada = styled.div`
         background-color: none;
     }
     .desc{
+        width: calc(100% - 20px);
         margin: auto;
         text-align: justify;
-        width: calc(100% - 30px);
+        background-color: none;
     }
 
 `
-export const Home = () => {
-    const [completo, setCompleto] = useState(false)
-
-    const alternarExibicaoTexto = () => {
-        completo ? setCompleto(false):setCompleto(true);
-    }
-
+export const Home = ({ rolarParaSecao }) => {
 
     const listaHabilidades = ["HTML5", "CSS3", "JAVASCRIPT", "REACT", "NODEJS", "JAVA", "PYTHON", "PHP"]
     const formacoes = [
@@ -54,6 +51,7 @@ export const Home = () => {
     return(
         <>
             <section>
+                <Element name="AboutSec"></Element>
                 <DivEstilizada>
                     <div>
                         <p className="im">I'm a</p>
@@ -70,40 +68,40 @@ export const Home = () => {
                         of the GUARDA CIVIL MUNICIPAL DO RECIFE.
                     </p>
                 </DivEstilizada>
+                
             </section>
             <section>
+                <Element name="SkillsSec"></Element>
                 <h2 className="subTitulo">Skills</h2>
                 <div className="artigo">
                     {
                         listaHabilidades.map(skill => (
-                            <p className="icone">{skill}</p>
+                            <p key={skill} className="icone">{skill}</p>
                         ))
                     }
                 </div>
             </section>   
             <section>
+                <Element name="EducationSec"></Element>
                 <h2 className="subTitulo">Education</h2>
                 <div className="artigo">
                     {
                         formacoes.map(formacao => (
-                            <div className="formacao">
-                                <h3>{formacao.curso}</h3>
-                                <h4>{formacao.escola}</h4>
-                                {
-                                    completo ? (
-                                        <p>{formacao.descricao} <p className="reduzir" onClick={()=>{alternarExibicaoTexto()}}> Reduzir conteúdo</p></p>
-                                    ):(
-                                        <p>{formacao.descricao.slice(0, formacao.descricao.indexOf("."))}... <span className="verMais" onClick={()=>{alternarExibicaoTexto()}}> ver mais</span></p>
-                                    )
-                                }
-                            </div>
+                            <CardFormacao 
+                                rolarParaSecao={rolarParaSecao}
+                                key={formacao.curso}
+                                curso={formacao.curso}
+                                escola={formacao.escola}
+                                descricao={formacao.descricao}
+                            />
                         ))
                     }
                 </div>
             </section>    
             <section>
+                <Element name="ProjectsSec"></Element>
                 <h2 className="subTitulo">Projects</h2>
-                <div className="artigo"style={{flexDirection: "column", alignItems: "center"}}>
+                <div className="artigo"style={{flexDirection: "column", alignItems: "center", justifyContent: "center"}}>
 
                     <img className="projeto" src="img/boe.png" alt="Imagem do projeto de Boletim eletrônico da Guarda Civil Municipal do Recife" />
                     <a target="_blank" href="https://boe-v3.vercel.app"><button>DEMO</button></a>                    
@@ -116,6 +114,7 @@ export const Home = () => {
                 </div>
             </section>
             <section>
+                <Element name="ContactSec"></Element>
                 <h2 className="subTitulo">Contact</h2>
                 <div className="artigo">
                     <a target="_black" href="https://www.linkedin.com/in/v1774r">
